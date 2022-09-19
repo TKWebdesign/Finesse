@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Finesse Watch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="cover">
+    <header>
+      <a href="" class="brand">Finesse Watch</a>
+      <div class="toggle" onclick="toggle();"></div>
+    </header>
+
+    <div class="content">
+      <div class="contentbx">
+        <h1>Time for Finesse</h1>
+        <br>
+        <h2>Time for<br>the future</h2>
+        <p>An enriching retina display, you can see more at a glance. Advanced sensors to track all the ways you move. Powerful features to enrich your life.</p>
+      </div>
+      <div class="imgbx">
+        <img src="images/img1.png" alt="">
+      </div>
+    </div>
+
+    <div class="item">
+      <ul class="img">
+        <img src="images/img2.jpg" alt="">
+      </ul>
+      <ul class="img">
+        <img src="images/img3.jpg" alt="">
+      </ul>
+      <ul class="img">
+        <img src="images/img4.jpg" alt="">
+      </ul>
+    </div>
+
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Fitness</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </section>
+
+  <div class="lightbox hide">
+    <span class="close-lightbox"></span>
+    <img src="images/img2.jpg" alt="">
+  </div>
+
+  <script type="text/javascript">
+    function toggle(){
+      var banner = document.querySelector('.cover');
+      var toggle = document.querySelector('.toggle');
+      banner.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    const closeLightbox=document.querySelector(".close-lightbox");
+    const lightbox=document.querySelector(".lightbox");
+    const lightboxImage=lightbox.querySelector("img")
+
+    lightbox.addEventListener("click",function(){
+      if(event.target!=lightboxImage){
+        lightbox.classList.remove(".show");
+        lightbox.classList.add("hide");
+      }
+    })
+
+    closeLightbox.addEventListener("click",function(){
+      lightbox.classList.remove("show");
+      lightbox.classList.add("hide");
+    })
+
+    const gallery=document.querySelector(".item");
+    const galleryItem=gallery.querySelectorAll(".img");
+
+    galleryItem.forEach(function(element){
+      element.querySelector("img").addEventListener("click",function(){
+        lightbox.classList.remove("hide");
+        lightbox.classList.add("show");
+        lightboxImage.src=element.querySelector("img").getAttribute()
+      })
+    })
+
+  </script>
+
+
+
+  
+
+</body>
+</html>
